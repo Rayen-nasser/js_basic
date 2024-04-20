@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>أوقات الصلاة</title>
+    <style>
+      /* تنسيق العناصر */
+/* تنسيق عام للمحتوى */
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f1f1f1;
+}
+
+/* تنسيق الحاوية */
+.container {
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px;
+  background-color: white;
+
+}
+
+/* تنسيق العناصر */
+.temps{
+  display: flex;
+  justify-content: space-between;
+}
+
+#location{
+  font-size: 25px;
+  text-align: center;
+  border-radius: 10px
+}
+.location {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+  
+  label {
+  font-size: 20px;
+  margin-right: 10px;
+  }
+  .temps{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  }
+  
+  .salah-time ,.salah-name,.data{
+  background-color: #3f51b5;
+  padding: 5px;
+  margin: 10px;
+  border-radius: 5px;
+  font-size: 20px;
+  color: white;
+  }
+
+
+    </style>
+    
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div class="content">
+      <div class="container">
+        <div class="location">
+          <label for="location">المدينة</label>
+          <select name="location" id="location">
+
+          </select>
+        </div>
+        <div class="temps">
+          <div class="aw9at">
+            <div class="salah-name" id="fajer"></div>
+            <div class="salah-name" id="sunrise"></div>
+            <div class="salah-name" id="doher"></div>
+            <div class="salah-name" id="aser"></div>
+            <div class="salah-name" id="magreb"></div>
+            <div class="salah-name" id="isha"></div>
+          </div>
+          <div class="salawat">
+            <div class="salah-name">الفجر</div>
+            <div class="salah-name">الشروق</div>
+            <div class="salah-name">الظهر</div>
+            <div class="salah-name">العصر</div>
+            <div class="salah-name">المغرب</div>
+            <div class="salah-name">العشاء</div>
+          </div>
+        </div>
+        <div class="data"></div>
+      </div>
+    </div>
+    <script src="../node_modules/axios/dist/axios.min.js"></script>
+    <script>
+      let cites= [
+      {
+          arabicName:"ڨفصة",
+          name:"Gafsa"
+        },
+      {
+          arabicName:"ڨابس",
+          name:"Gabès"
+        },
+        {
+          arabicName:"الجربة",
+          name :"Médenine"
+        },
+      ]
+        
+      for(city of cites){
+        const content =`<option>${city.arabicName}</options>`
+          document.getElementById("location").innerHTML += content
+      }
+
+
+
+      document.getElementById("location").addEventListener("change",function(){
+        let location=""
+        for(let city of cites)
+        {
+          if(this.value == city.arabicName)
+          {
+            location = city.name
+          }
+        }
+        getSalatTimeOfcity(location)
+      })
+      function getSalatTimeOfcity(cityName){
+        let params = {
+        country : "TN",
+        city:cityName,
+      }
+
+        axios
+        .get("http://api.aladhan.com/v1/timingsByCity", {
+          params:params
+        })
+        .then(function (response) {
+          // handle success
+
+
+          const timings = response.data.data.timings;
+          GetTimeOfSalat("fajer",timings.Fajr)
+          GetTimeOfSalat("sunrise",timings.Sunrise)
+          GetTimeOfSalat("doher",timings.Dhuhr)
+          GetTimeOfSalat("aser",timings.Asr)
+          GetTimeOfSalat("magreb",timings.Sunset)
+          GetTimeOfSalat("isha",timings.Isha)
+
+          const day = response.data.data.date.hijri.day;
+          const weekDay = response.data.data.date.hijri.weekday.ar
+          const month = response.data.data.date.hijri.month.ar
+          const year = response.data.data.date.hijri.year
+          const Data =weekDay+" "+day+" "+month+" "+year
+          document.querySelector(".data").innerHTML = Data
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+        })
+
+        function GetTimeOfSalat(id, time){
+          document.getElementById(id).innerHTML = time;
+        }
+      }
+      getSalatTimeOfcity("Gafsa")
+    </script>
+  </body>
+</html>

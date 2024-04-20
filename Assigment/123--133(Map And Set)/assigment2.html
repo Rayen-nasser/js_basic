@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        ///////////////////////////////////////////////////////Assigment 6
+
+
+        let chars = ["A", "B", "C", "D", "E", 10, 15, 6];
+
+        // Needed Output
+        //['A', 'B', 'C', 'A', 'B', 'C', 'D', 'E']
+        chars.copyWithin(6,3,5)
+        chars.copyWithin(3,0,3)
+        console.log(chars)
+
+        let chars1 = ["A", "B", "C", 20, "D", "E", 10, 15, 6];
+
+        // Needed Output
+        //['A', 'B', 'C', 'D', 'A', 'B', 'C', 'D', 'E']
+        chars1.copyWithin(7,4,6)
+        chars1.copyWithin(3,4,5)
+        chars1.copyWithin(4,0,3)
+
+        console.log(chars1)
+
+        let chars2 = ["Z", "Y", "A", "D", "E", 10, 1];
+
+        // Needed Output
+        // ["Z", "Y", "Z", "Y", "A", "D", "E"]
+
+        chars2.copyWithin(5,3,5)
+        chars2.copyWithin(2,0,3)
+        
+        console.log(chars2)
+
+        let chars3 = ["A", "B", "C", "D", "E", 10, 15, 6];
+        Array.prototype.move = function(from,to){
+            this.splice(to,0,this.splice(from,1)[0]);
+            return this;
+        };
+
+        chars3.move(5,0)
+        chars3.move(6,1)
+        chars3.move(7,2)
+        console.log(chars3)
+        chars3.copyWithin(0,3,6)
+        console.log(chars3)
+
+
+        ///////////////////////////////////////////////////////Assigment 7
+
+        let numsOne = [1, 2, 3];
+        let numsTwo = [4, 5, 6];
+
+        // Needed Output
+        // [1, 2, 3, 4, 5, 6]
+
+
+        ////// Method 1
+        console.log([...numsOne,...numsTwo])
+       
+
+        ////// Method 2
+        numsOne.push(...numsTwo)
+        console.log(numsOne)
+
+        ////// Method 3
+        numsOne.concat(...numsTwo)
+        console.log(numsOne)
+
+
+        ////// Method 4
+        numsOne.push.apply(numsTwo)
+        console.log(numsOne)
+
+
+        ///////////////////////////////////////////////////////Assigment 8
+
+        let n1 = [10, 30, 10, 20];
+        let n2 = [30, 20, 10];
+
+        // Needed Output
+        //210
+        console.log([...n1,...n2].length * n2[0])
+    </script>
+</body>
+</html>

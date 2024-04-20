@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+  Important Knowledge
+  For Promises
+  - Call Stack
+  --- Mechanism To Make Interpreter Track Your Calls
+  --- When You Call A Function Its Added To The Stack
+  --- When Function Executed Its Removed From The Stack
+  --- The Interpreter Continue Calling From The Last Point Reached
+  --- Call Stack Detect Web API And Leave It To The Browser To Handle It
+  - Web API
+  --- Methods Available From Environment => Browser
+  --- When Complete It Add The Callback To The Callback Queue
+  - Event Loop
+  --- Wait The Call Stack To Finish
+  --- Get Callback From Callback Queue
+  --- Add Callback To Call Stack
+  - Callback Queue
+*/
+
+// Example One
+
+let i = 10;
+let j = 20;
+console.log(i + j);
+
+function first() {
+  console.log("Hello First");
+}
+
+function second() {
+  first();
+  console.log("Hello Second");
+}
+
+second();
+
+// Example Two
+
+window.setTimeout(() => console.log("Last"), 1000);
+console.log("One");
+window.setTimeout(() => console.log("Two"), 0);
+console.log("Three");
+
+// Example Three
+
+window.setTimeout(() => console.log(myVariable), 0);
+
+let myVariable = 100;
+
+myVariable += 200;
+    </script>
+</body>
+</html>

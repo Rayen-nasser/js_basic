@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let myRequest = new XMLHttpRequest()
+        myRequest.open("GET","./articles.json")
+        myRequest.send()
+        
+        myRequest.onreadystatechange = function(){
+            if(this.status === 200 && this.readyState === 4)
+            {
+                let Date = JSON.parse(this.responseText)
+                let mainDiv = document.createElement("div")
+                mainDiv.setAttribute("id","data")
+                for(let i=0 ; i <  Date.length ; i++)
+                {
+                    let div = document.createElement("div")
+                    let h2 = document.createElement("h2")
+                    let p1 = document.createElement("p")
+                    let p2 = document.createElement("p")
+                    let p3 = document.createElement("p")
+                    
+                    h2.append(Date[i].numOfTishirt)
+                    p1.append(Date[i].player)
+                    p2.append(Date[i].equip)
+                    p3.append(Date[i].job)
+
+                    div.append(h2,p1,p2,p3)
+                    mainDiv.appendChild(div)
+                }
+                
+                document.body.appendChild(mainDiv)
+            }
+        }
+    </script>
+</body>
+</html>

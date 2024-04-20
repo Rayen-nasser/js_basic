@@ -1,0 +1,35 @@
+[
+    {
+        "numOfTishirt":31,
+        "player":"messi",
+        "equip":"PSG",
+        "job" : "attacker"     
+    },
+    {
+        "numOfTishirt":10,
+        "player":"mohamed salah",
+        "equip":"Liverpool" ,  
+        "job" : "attacker"     
+
+    },
+    {
+        "numOfTishirt":9,
+        "player":"lewandowski",
+        "equip":"FCB",
+        "job" : "attacker"     
+    },
+    {
+        "numOfTishirt":1,
+        "player":"ter stegen",
+        "equip":"FCB"  ,
+        "job" : "defend"     
+
+    },
+    {
+        "numOfTishirt":4,
+        "player":"araraujo",
+        "equip":"FCB" ,
+        "job" : "gurdian"     
+
+    }
+  ]

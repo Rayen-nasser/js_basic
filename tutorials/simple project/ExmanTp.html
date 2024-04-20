@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+      <fieldset>
+        <legend>Fiche Client</legend>
+        nom : <br />
+        <input type="text" class="nom" /><br />
+        Télephone : <br />
+        <input type="tel" class="tel" /><br />
+        E-mail : <br />
+        <input type="email" class="email" /><br /><br />
+        <div id="error" style="color:red"></div>
+        <input type="button" value="Exmple" onclick="exmple()" />
+        <input type="button" value="Formater" onclick="formater()" />
+        <input type="button" value="Valider" onclick="valider()" />
+        <input type="button" value="Créer" onclick="creerClient()"/>
+        <input type="button" value=" Afficher Clients" onclick="afficheClients()"/>
+      </fieldset>
+    <div class="data"></div>
+    <script>
+      let nom = document.querySelector(".nom");
+      let tel = document.querySelector(".tel");
+      let email = document.querySelector(".email");
+
+
+      function exmple() {
+        nom.value = "foulen ben foulene";
+        tel.value = "98-98-98-98";
+        email.value = "aymen@isetjb.com";
+      }
+
+      function formater() {
+        nom.value = nom.value.split(" ").join("");
+        tel.value = `+216-${tel.value}`;
+        mail = email.value;
+        Nom = mail.slice(0, mail.indexOf("@"));
+        email.value = `${nom.value}@laposte.tn`;
+      }
+
+      function valider() {
+  try {
+    if (nom.value === "" && tel.value === "" && email.value === "") {
+      throw new Error("Error: input vide!!!!");
+    }
+  } catch (err) {
+    document.getElementById("error").innerHTML = err.message;
+  }
+
+  let reg = /^(\+216)\-[0-9]{2}\-[0-9]{3}\-[0-9]{3}/gi;
+  try {
+    if (!reg.test(tel.value)) {
+      throw new Error("Error: telephone erroré");
+    }
+  } catch (err) {
+    document.getElementById("error").innerHTML = err.message;
+  }
+
+  let regEmail = /\w{1,}@laposte.tn/ig;
+  try {
+    if (!regEmail.test(email.value)) {
+      throw new Error("Error: email erroré");
+    }
+  } catch (err) {
+    document.getElementById("error").innerHTML = err.message;
+  }
+}
+
+let t = []
+
+function save(clientPoste){
+  t.push(clientPoste)
+}
+function creerClient(){
+  clientPoste ={
+    nom : nom.value,
+    tel : tel.value,
+    email : email.value,
+    }
+    save(clientPoste)
+    nom.value =""
+    tel.value =""
+    email.value =""
+}
+
+function afficheClients(){
+  data = document.querySelector(".data")
+  data.innerHTML =""
+  for(let i = 0 ; i < t.length ; i++){
+    data.innerHTML += `${t[i].nom} ${t[i].tel} ${t[i].email} <br>`
+  } 
+}
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+///////////////////////////////////////////////////////Assigment 1
+      // Needed Output
+      let setNumber = new Set().add(10);
+      setNumber.add(20).add(setNumber.size);
+
+      console.log(setNumber)
+
+      // console.log([...setNumber[2]]);
+      let myFriends = ["Osama", "Ahmed", "Sayed", "Sayed", "Mahmoud", "Osama"];
+
+      let newMyFriends =new Set(myFriends)
+      
+      console.log(Array.from(newMyFriends).sort())
+      
+// Needed Output
+// (4) ['Ahmed', 'Mahmoud', 'Osama', 'Sayed']
+
+///////////////////////////////////////////////////////Assigment 2
+/////////////////////////////convert object to map
+let myInfo = {
+  username: "Osama",
+  role: "Admin",
+  country: "Egypt",
+};
+
+const map = new Map(Object.entries(myInfo));
+//////////Ou 
+// Object.keys(myInfo).forEach((key)=>{
+//     map.set(key, myInfo[key]);
+// })
+console.log(map);
+console.log(map.size);
+
+let check = Object.keys(myInfo)
+
+console.log(check.some((e) => e === "role"))
+// Needed Output
+// Map(3) {'username' => 'Osama', 'role' => 'Admin', 'country' => 'Egypt'}
+// 3
+// true
+
+///////////////////////////////////////////////////////Assigment 3
+////////////////////////////////convert map to object
+let myinfo = ([
+    ['username','Osama'],
+    ['role','Admin'],
+    ['country','Egypt'],
+]);
+
+// const obj = Object.fromEntries(myinfo);
+// console.log(obj);
+
+//////////Ou
+const obj ={};
+map.forEach((value, key) => {
+    obj[key]= value;
+});
+console.log(obj)
+
+
+///////////////////////////////////////////////////////Assigment 4
+let theNumber = 100020003000;
+
+console.log([...new Set(String(theNumber))].sort().slice(true).join(""))
+// Needed Output
+// 123
+
+///////////////////////////////////////////////////////Assigment 5
+let theName = "Elzero";
+
+console.log([...new Set(String(theName))]);
+console.log([...theName]);
+console.log(Array.from(theName));
+console.log(theName.split(""));
+console.log([...theName].reduce((acc,cur) => {
+    acc.push(cur);
+    return acc
+},[]))
+
+let arr=[];
+for(i=0 ; i<theName.length;i++){
+    arr.push(theName[i]);
+}
+console.log(arr)
+// Needed Output
+// ['E', 'l', 'z', 'e', 'r', 'o']
+    </script>
+</body>
+</html>

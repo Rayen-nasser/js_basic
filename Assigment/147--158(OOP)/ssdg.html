@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+/*
+  Encapsulation
+  - Class Fields Are Public By Default
+  - Guards The Data Against Illegal Access.
+  - Helps To Achieve The Target Without Revealing Its Complex Details.
+  - Will Reduce Human Errors.
+  - Make The App More Flexible And Manageable.
+  - Simplifies The App.
+*/
+
+class User {
+  // Private Property
+  #e;
+  constructor(id, username, eSalary) {
+    this.i = id;
+    this.u = username;
+    this.#e = eSalary;
+  }
+  getSalary() {
+    return parseInt(this.#e);
+  }
+}
+class Admin extends User{
+    constructor(id,username,eSalary,work){
+        super(id,username,eSalary)
+        this.w = work;
+    }
+}
+
+let userOne = new User(100, "Elzero", "5000 Gneh");
+let userTwo = new Admin(101,"rayen","5000 gneh","devloper")
+console.log(userOne.u);
+console.log(userOne.getSalary() * 0.3);
+console.log(userTwo.u)
+console.log(userTwo.getSalary() * 1.5);
+console.log(userTwo.w)
+    </script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 id="title1" style="visibility: hidden">Titel 1</h1>
+    <h1 id="title2" style="visibility: hidden">Titel 2</h1>
+    <h1 id="title3" style="visibility: hidden">Titel 3</h1>
+    <h1 id="title4" style="visibility: hidden">Titel 4</h1>
+    <h1 id="title5" style="visibility: hidden">Titel 5</h1>
+
+    <script>
+      async function showTitle() {
+        await new Promise((resolve, reject) => {
+          setTimeout(() => {
+            document.getElementById("title1").style.visibility = "visible";
+            resolve();
+          }, 1000);
+        });
+
+        await new Promise((resolve, reject) => {
+          setTimeout(() => {
+            document.getElementById("title2").style.visibility = "visible";
+            resolve();
+          }, 1000);
+        });
+
+        await new Promise((resolve, reject) => {
+          setTimeout(() => {
+            document.getElementById("title3").style.visibility = "visible";
+            resolve();
+          }, 1000);
+        });
+
+        await new Promise((resolve, reject) => {
+          setTimeout(() => {
+            document.getElementById("title4").style.visibility = "visible";
+            resolve();
+          }, 1000);
+        });
+
+        await new Promise((resolve, reject) => {
+          setTimeout(() => {
+            document.getElementById("title5").style.visibility = "visible";
+            resolve();
+          }, 1000);
+        });
+      }
+      showTitle();
+      // new Promise((resolve,reject)=>{
+      //     setTimeout(()=>{
+      //         document.getElementById("title1").style.visibility = "visible"
+      //         resolve()
+      //     },1000)
+      // }).then(()=>{
+      //     return new Promise((resolve,reject)=>{
+      //     setTimeout(()=>{
+      //         document.getElementById("title2").style.visibility = "visible"
+      //         resolve()
+      //     },1000)
+      //     })
+      // }).then(()=>{
+      //     return new Promise((resolve,reject)=>{
+      //     setTimeout(()=>{
+      //         document.getElementById("title3").style.visibility = "visible"
+      //         resolve()
+      //     },1000)
+      //     })
+      // }).then(()=>{
+      //     return new Promise((resolve,reject)=>{
+      //     setTimeout(()=>{
+      //         document.getElementById("title4").style.visibility = "visible"
+      //         resolve()
+      //     },1000)
+      //     })
+      // }).then(()=>{
+      //     return new Promise((resolve,reject)=>{
+      //     setTimeout(()=>{
+      //         document.getElementById("title5").style.visibility = "visible"
+      //         resolve()
+      //     },1000)
+      //     })
+      // })
+    </script>
+  </body>
+</html>

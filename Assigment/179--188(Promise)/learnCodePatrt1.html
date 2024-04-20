@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // const myPromise = new Promise((resolveFunction, rejectFunction) =>{
+      //     let connect = true
+      //     if (connect){
+      //         resolveFunction("connected")
+      //     }else{
+      //         rejectFunction(Error("Not connected"))
+      //     }
+      // }).then(
+      //     (resolveFunction) => console.log(`${resolveFunction}`),
+      //     (rejectFunction) => console.log(`${rejectFunction}`)
+      // )
+
+      // Method ONE
+      // myPromise.then(
+      //     (resolveFunction) => console.log(`${resolveFunction}`),
+      //     (rejectFunction) => console.log(`${rejectFunction}`)
+      // )
+
+      // Method TWO
+      //     let resolve = (resolveValue) => console.log(`Good ${resolveValue}`)
+      //     let reject = (rejectValue) => console.log(`Bad ${rejectValue}`)
+      //     myPromise.then(resolve,reject)
+
+    //   const getDate = (link) => {
+    //     return new Promise((resolve, reject) => {
+    //       let request = new XMLHttpRequest();
+    //       request.onload = function () {
+    //         if (this.readyState === 4 && this.status === 200) {
+    //           resolve(JSON.parse(this.responseText));
+    //         } else {
+    //           reject(Error("NO Data Found"));
+    //         }
+    //       };
+    //       request.open("GET", link);
+    //       request.send();
+    //     });
+    //   };
+
+    //   getDate("https://jsonplaceholder.typicode.com/users")
+    //     .then((result) => {
+    //       result.length = 14;
+    //       return result;
+    //     })
+    //     .then((result) => console.log(result[1].name))
+    //     .catch((rej)=> console.log(rej))
+
+    // FETCH API
+
+    fetch("https://jsonplaceholder.typicode.com/users")
+    .then((result) => {
+        let myData = result.json()
+        console.log(myData);
+        return myData
+    }).then((data)=>{
+        data.length=10
+        console.log(data[2]);
+        return data
+    }).then((fil)=>{
+        console.log(fil[2].email);
+    })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+     body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+.box {
+  background-color: #eee;
+  color: black;
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+border-radius: 10px;
+}
+
+.box .close {
+  position: absolute;
+  background-color: red;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 15px;
+  top: -10px;
+  right: -10px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.box h2 {
+  font-size: 25px;
+}
+
+.box p {
+  font-size: 20px;
+} 
+  </style>
+  <body>
+    <script>
+        function model() {
+          let box = document.createElement("div");
+          let close = document.createElement("div");
+          let title = document.createElement("h2");
+          let parg = document.createElement("p");
+
+          box.className = "box";
+          close.className = "close";
+
+          let Text = document.createTextNode("Welcome To Elzero School");
+          let boxTitle = document.createTextNode("Welcome");
+          let boxClose = document.createTextNode("x");
+
+          title.appendChild(boxTitle);
+          parg.appendChild(Text);
+          close.appendChild(boxClose);
+
+          box.appendChild(title);
+          box.appendChild(parg);
+          box.appendChild(close);
+
+          close.style.cssText=""
+
+          document.body.append(box);
+        }
+        function close() {
+          let box = document.querySelector('.box');
+          let close = document.querySelector('.close');
+
+          close.addEventListener("click", (e) => {
+              box.remove();
+          });
+        }
+        setTimeout(model, 2000);
+        setTimeout(close, 2000);
+    </script>
+  </body>
+</html>

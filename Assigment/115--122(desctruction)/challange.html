@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let chosen = 3;
+
+let myFriends = [
+  { title: "Osama", age: 39, available: true, skills: ["HTML", "CSS"] },
+  { title: "Ahmed", age: 25, available: false, skills: ["Python", "Django"] },
+  { title: "Sayed", age: 33, available: true, skills: ["PHP", "Laravel"] },
+];
+const {title,age,available,skills: [,css]}=myFriends[chosen-1];
+// Write Your Code Here
+let thresult ;
+if(available)
+{
+    thresult = "available";
+}else{
+    thresult = "notAvailable";
+}
+    
+    console.log(title);
+    console.log(age);
+    console.log(thresult);
+    console.log(css);
+// If chosen === 1
+
+"Osama"
+39
+"Available"
+"CSS"
+
+// If chosen === 2
+
+"Ahmed"
+25
+"Not Available"
+"Django"
+
+// If chosen === 3
+
+"Sayed"
+33
+"Available"
+"Laravel"
+    </script>
+</body>
+</html>

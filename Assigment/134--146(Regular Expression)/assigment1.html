@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+  Regular Expression
+
+  Syntax
+  /pattern/modifier(s);
+  new RegExp("pattern", "modifier(s)")
+
+  Modifiers => Flags
+  i => case-insensitive
+  g => global
+  m => Multilines
+
+  Search Methods
+  - match(Pattern)
+
+  Match
+  -- Matches A String Against a Regular Expression Pattern
+  -- Returns An Array With The Matches
+  -- Returns null If No Match Is Found.
+//////////////////////////////////////////////////////////////////////////
+  Regular Expression
+
+  Ranges
+
+  - Part 1
+  (X|Y) => X Or Y
+  [0-9] => 0 To 9
+  [^0-9] => Any Character Not 0 To 9
+  Practice
+
+  - Part 2
+  [a-z]
+  [^a-z]
+  [A-Z]
+  [^A-Z]
+  [abc]
+  [^abc]
+/////////////////////////////////////////////////////////////////////////
+  Regular Expression
+  Character Classes
+  . => matches any character, except newline or other line terminators.
+  \w => matches word characters. [a-z, A-Z, 0-9 And Underscore]
+  \W => matches Non word characters
+  \d => matches digits from 0 to 9.
+  \D => matches non-digit characters.
+  \s => matches whitespace character.
+  \S => matches non whitespace character.
+////////////////////////////////////////////////////////////////////////
+ Regular Expression
+  Character Classes
+  \b => matches at the beginning or end of a word.
+  \B => matches NOT at the beginning/end of a word.
+
+  Test Method
+  pattern.test(input)
+  /////////////////////////////////////////////////////////////////////
+    Regular Expression
+
+  Quantifiers
+  n+    => One Or More
+  n*    => zero or more
+  n?    => zero or one
+
+  $  => End With Something
+  ^  => Start With Something
+  ?= => Followed By Something
+  ?! => Not Followed By Something
+
+  n{x}   => Number of
+  n{x,y} => Range
+  n{x,}  => At Least x
+*/
+
+      let myString = "AaBbCc1232!456@Ll987% 1Spam spam15 spann";
+      let capital = /[A-Za-z]/g;
+      let re = /(\bspam|spam\b)/gi;
+      let Notcapital = /[^A-Za-z]/g;
+      console.log(myString.match(capital));
+      console.log(myString.match(Notcapital));
+      console.log(myString.match(re));
+      console.log(re.test(myString));
+      /////////Quantifiers
+      let serials = "s100s s3000S S50000s S950000S";
+      let N3m = /s\d{3}s/gi;
+      console.log(serials.match(N3m));
+      console.log(serials.match(/s\d{4,5}s/gi));
+      console.log(serials.match(/s\d{4,}s/gi));
+
+      let mystring = "We Love Programming";
+      let names = "1OsamaZ 2AhmedZ 3Mohammed 4MoustafaZ 5GamalZ";
+      console.log(names.match(/\d\w{8}(?!z)/gi));
+
+      ///////////////////assignment 1
+      let ip = "2001:db8:3333:4444:5555:6666:7777:8888";
+      let testIP = /\d{4}:\w+:\d{4}:\d{4}:\d{4}:\d{4}:\d{4}:\d{4}/gi;
+      console.log(ip.match(testIP));
+      ////////////////////assignment 2
+
+      let specialNames = "Os10O OsO Os100O Osa100O Os1000 Os100m";
+      let referense = /Os\w*O/gi;
+      console.log(specialNames.match(referense));
+      // Output
+      // ['Os10O', 'OsO', 'Os100O']
+
+      ////////////////////assignment 3
+      let phone = "+(995)-123 (4567)";
+
+      let NumTel = /\+\(\d{3}\)\-\d{3}\s\(\d{4}\)/gi;
+      console.log(phone.match(NumTel));
+
+      ////////////////////assignment 4
+      let ref = /https?:\/\/(?:[-\w]+\.)?([-\w]+)\.\w+(?:\.\w+)?\/?.*/i;
+      //https(or http)(ziro or one)://
+
+      ////////////////////assignment 5
+      let date1 = "25/10/1982";
+      let date2 = "25 - 10 - 1982";
+      let date3 = "25 10 1982";
+      let date4 = "25 10 82";
+
+      let red = /\d{2}(\/|\s|\s\-\s)\d{2}(\/|\s|\s\-\s)\d{2,4}/gi; // Write Pattern Here
+      console.log(date1.match(red)); // "25/10/1982"
+      console.log(date2.match(red)); // "25 - 10 - 1982"
+      console.log(date3.match(red)); // "25 10 1982"
+      console.log(date4.match(red)); // "25 10 82"
+
+      ////////////////////assignment 6
+      let url1 = "elzero.org";
+      let url2 = "http://elzero.org";
+      let url3 = "https://elzero.org";
+      let url4 = "https://www.elzero.org";
+      let url5 = "https://www.elzero.org:8080/articles.php?id=100&cat=topics";
+
+      let rel = /(https?:\/\/)?(?:\w+\.)?(\w+)\.\w+(?:\.\w+)?\/?.*/gi; // Write Your Pattern Here
+      console.log(url1.match(rel));
+      console.log(url2.match(rel));
+      console.log(url3.match(rel));
+      console.log(url4.match(rel));
+      console.log(url5.match(rel));
+
+      ///////////////////////replace Method
+      let str = "I like to eat, eat, eat apples and orange";
+      let rebp = /apples|bananas|orange/gi;
+
+      let newStr = str.replace(rebp, (match) => {
+        console.log({ match });
+        return match.toUpperCase();
+      });
+
+      console.log(newStr);
+    </script>
+  </body>
+</html>

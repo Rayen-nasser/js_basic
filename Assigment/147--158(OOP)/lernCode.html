@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class Players {
+        //static propreties
+        static count =0
+        constructor(id, player, equipe, salary) {
+        // propreties
+          this.i = id;
+          this.p = player || "unknown";
+          this.e = equipe;
+          this.s = salary < 35 && this.e === "fcb"? salary + 5 : salary;
+          this.msg = function (){
+            return `I'm ${this.p},I play in ${this.e},my number is ${this.i}`;
+          }
+          Players.count++;
+        }
+          // methods
+          updatePlayer(newPlayer){
+            this.p = newPlayer;
+          }
+          // static methods
+          static say(){
+            return `welcom Players of  football`
+          }
+      }
+      let nb30 = new Players(30, "messi", "pcg", 65);
+      let nb7 = new Players(7, "outhmen", "fcb", 15);
+      let nb9 = new Players(9, "lewandowski", "fcb", 25);
+      nb7.updatePlayer("cotinho")
+      console.log(Players.say())
+      console.log(`nombe of players is ${Players.count}`)
+
+      console.log(nb30.i);
+      console.log(nb30.p);
+      console.log(nb30.e);
+      console.log(nb30.s);
+      console.log(nb30.msg())
+
+      console.log(nb7.i);
+      console.log(nb7.p);
+      console.log(nb7.e);
+      console.log(nb7.s);
+      console.log(nb7.msg())
+
+      console.log(nb9.i);
+      console.log(nb9.p);
+      console.log(nb9.e);
+      console.log(nb9.s);
+      console.log(nb9.msg())
+
+      //////Update propreties and Built in
+
+    </script>
+  </body>
+</html>

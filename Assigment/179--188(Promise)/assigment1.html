@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // let myRequest = new XMLHttpRequest()
+        // myRequest.open("GET","./data.json")
+        // myRequest.send()
+        
+        // let promise = new Promise((resolve,reject) => {
+        //   myRequest.onreadystatechange = function(){
+        //     if(this.status === 200 && this.readyState === 4  )
+        //   {
+        //     resolve(JSON.parse(this.responseText))
+        //   }else if(this.readyState === 4){
+        //     reject(Error("Not Found"))
+        //   }
+        //   }
+        // })
+
+        // promise.then((result) => {
+        //   result.length = 5;
+        //   return result;
+        // })
+        // .then((result) => {for(let item of result){
+        //     document.body.innerHTML+=`<div><h3>${item.title}</h3><p>${item.description}</p></div>`
+        // }})
+        // .catch((rej)=> console.log(rej))
+
+        fetch("./data.json").then((result) =>{
+            let myData = result.json()
+            return myData
+        }).then((res)=>{
+            res.length = 5
+            return res
+        }).then((data) =>{
+            for(let item of data){
+            document.body.innerHTML+=`<div><h3>${item.title}</h3><p>${item.description}</p></div>`
+        }})
+    </script>
+</body>
+</html>

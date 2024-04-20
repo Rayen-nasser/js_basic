@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let t = [1,2,3,4,5,6,7,8,9,"A","B","C","D","E","F"]
+        let colorParts =[]
+
+        for(let i = 0 ; i < 6 ;i++){
+            colorParts.push(t[Math.floor(Math.random() * t.length)])
+        }
+
+        let color = `#${colorParts.join("")}`
+
+        document.body.append(color)
+        document.body.style.backgroundColor = color
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const t0 = performance.now();
+
+    for (let i = 0; i < 100000; i++) {
+  // document.write(`<div>${i}</div>`);
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(i));
+  document.body.appendChild(div);
+}
+const t1 = performance.now();
+console.log(`Call to doSomething took ${t1 - t0} milliseconds.`);
+
+    </script>
+</body>
+</html>

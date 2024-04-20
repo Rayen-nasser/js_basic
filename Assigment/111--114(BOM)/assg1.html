@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Clicker+Script&family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Poppins:wght@100;200;300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo+Play:wght@200;300;400&family=Clicker+Script&family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Poppins:wght@100;200;300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo+Play:wght@200;300;400&family=Clicker+Script&family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Poppins:wght@100;200;300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+    <style>
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .container select {
+        margin: 10px;
+        width: 150px;
+        border: none;
+        outline: none;
+      }
+      .container div {
+        position: absolute;
+        top: 150px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div>Hello My Name Is Ahmed</div>
+      <!-- Font Select Box -->
+      <select id="select__font">
+        <option value="Open Sans">Open</option>
+        <option value="Cairo">Cairo</option>
+        <option value="Poppins">Poppins</option>
+      </select>
+
+      <!-- Colors Select Box -->
+      <select id="select__color">
+        <option value="#0F6292">#0F6292</option>
+        <option value="#13005A">#13005A</option>
+        <option value="#FF6E31">#FF6E31</option>
+        <option value="#913175">#913175</option>
+        <option value="#AD8E70">#AD8E70</option>
+        <option value="#10A19D">#10A19D</option>
+      </select>
+
+      <!-- fontSize Select Box -->
+      <select id="select__fontSize">
+        <option value="16px">16</option>
+        <option value="18px">18</option>
+        <option value="20px">20</option>
+        <option value="22px">22</option>
+        <option value="24px">24</option>
+        <option value="26px">26</option>
+        <option value="28px">28</option>
+        <option value="30px">30</option>
+        <option value="40px">40</option>
+      </select>
+    </div>
+    <script>
+      let selectFont = document.getElementById("select__font");
+      let selectColor = document.getElementById("select__color");
+      let selectFontSize = document.getElementById("select__fontSize");
+
+      let fontFamily = localStorage.getItem('font');
+      let fontSize = localStorage.getItem('size');
+      let color = localStorage.getItem('color');
+
+      document.body.style.fontFamily = fontFamily;
+      document.body.style.fontSize = fontSize;
+      document.body.style.background = color;
+
+      selectFont.value = fontFamily;
+      selectFontSize.value = fontSize;
+      selectColor.value = color;
+      
+      selectFont.addEventListener('change' ,(e)=>{
+        fontFamily = selectFont.value;
+        document.body.style.fontFamily = fontFamily;
+        localStorage.setItem('font', fontFamily);
+      })
+      
+      selectColor.addEventListener('change' ,(e)=>{
+        color = selectColor.value;
+        document.body.style.background = color;
+        localStorage.setItem('color', color);
+      })
+      
+      selectFontSize.addEventListener('change' ,(e)=>{
+        fontSize = selectFontSize.value;
+        document.body.style.fontSize = fontSize;
+        localStorage.setItem('font', fontSize);
+      })
+    </script>
+  </body>
+</html>

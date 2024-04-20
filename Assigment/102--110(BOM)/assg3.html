@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let div = document.createElement('div');
+        let text = document.createTextNode('10');
+        
+
+        div.appendChild(text);
+        document.body.append(div);
+        function ngv(){
+            div.innerHTML -=1;
+            if(div.innerHTML== 5){
+                let newwindow = window.open("https://Elzero.org","","width=500,height=500");
+            }
+            if(div.innerHTML== 0)
+            {
+                clearInterval(count);
+                // window.open("https://Elzero.org", "", "width=400,height=500")
+            }
+        }
+        let count = setInterval(ngv, 1000)
+    </script>
+</body>
+</html>

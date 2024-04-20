@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Enter your text: <input type="text" class="text"><br>
+    Type: 
+    <select id="type">
+        <option value="h1">h1</option>
+        <option value="h2">h2</option>
+        <option value="h3">h3</option>
+        <option value="h4">h4</option>
+        <option value="h5">h5</option>
+        <option value="p">p</option>
+    </select><br>
+    Color: <input type="color" class="color">
+    <input type="button" value="CLICK HERE" class="btn">
+
+    <script>
+        function elementFactory(type, text, color) {
+            const el = document.createElement(type);
+            el.innerText = text;
+            el.style.color = color;
+            document.body.appendChild(el);
+            return {
+                setText: function(text) {
+                    el.innerText = text;
+                },
+                setColor: function(color) {
+                    el.style.color = color;
+                },
+                setWeight: function(weight) {
+                    el.style.fontWeight = weight;
+                }
+            };
+        }
+
+        document.querySelector(".btn").addEventListener("click", function() {
+            const text = document.querySelector(".text").value;
+            const type = document.querySelector("#type").value;
+            const color = document.querySelector(".color").value;
+            const el = elementFactory(type, text, color);
+        });
+    </script>
+</body>
+</html>
